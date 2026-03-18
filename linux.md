@@ -65,6 +65,10 @@
 
 **grep** - global regular expression print - finds keywords in the contents of a file (eg grep "text" filename.txt)
 
+to add sorted results to a new or existing text file, use the command "grep "KEYWORD" filename.txt > newfile.txt"
+
+-----
+
 **find** - finds a file from current directory (eg find filename.txt)
 
 **touch** - create an empty file
@@ -121,6 +125,10 @@ The -c1 option tells head to show only the first byte (character) of the file. L
 Output: I am Labby!
 
 **diff** - compare two files and see the differences between them
+
+Just like with files, the order matters when comparing directories. *diff dir1 dir2* shows what's in dir1 but not in dir2, while *diff dir2 dir1* shows the opposite.
+
+-----
 
 "diff file1 file2"
 Output: 1c1
@@ -308,6 +316,13 @@ You can use a wildcard (*) to select multiple files that match a pattern. For ex
 "tar -tf filename.tar.gz" lists only the names of the files and directories in the archive
 
 "tar -tvf filename.tar.gz" provides a detailed list, similar to ls -l output, including file permissions, ownership, size, and timestamp.
+
+-----
+
+**dmesg** - view kernel messages [sudo is required]
+. Pipeline for filtering: You need to send the output of dmesg to grep to filter for specific keywords. Use the pipe operator | to connect them.
+. Handle multiple keywords: Since you need to search for both "fail" OR "error" in a case-insensitive manner, consider using the grep options -i (for case-insensitive) and -E (for extended regular expressions, which allows you to use the | symbol between your search terms).
+. eg "sudo dmesg | grep [your_options (i.e -E , -i , -r)] "term1|term2" > ~/project/boot_issues.txt"
 
 -----
 
