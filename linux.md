@@ -326,3 +326,10 @@ You can use a wildcard (*) to select multiple files that match a pattern. For ex
 
 -----
 
+**dpkg** - d-package - installs, removes, and queries .deb packages directly, maintaining a local database of software
+
+**apt** - advanced package tool - automates the installation, removal, and updating of software packages by managing dependencies and retrieving software from online repositories, making system maintenance efficient
+
+**aptitude** - a package managing tool more advanced than apt, provides a visual interface rather than a command-line interface like apt
+
+**snap** - a command-line interface for managing snaps, which are self-contained, sandboxed software packages that work across many different Linux distributions. Developed by Canonical, the snap tool interacts with a background service called snapd to handle installation, updates, and removal of applications. https://www.geeksforgeeks.org/linux-unix/snap-package-manager-on-ubuntu/ 
