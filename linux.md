@@ -333,3 +333,85 @@ You can use a wildcard (*) to select multiple files that match a pattern. For ex
 **aptitude** - a package managing tool more advanced than apt, provides a visual interface rather than a command-line interface like apt
 
 **snap** - a command-line interface for managing snaps, which are self-contained, sandboxed software packages that work across many different Linux distributions. Developed by Canonical, the snap tool interacts with a background service called snapd to handle installation, updates, and removal of applications. https://www.geeksforgeeks.org/linux-unix/snap-package-manager-on-ubuntu/ 
+
+**ps** - process status - used to display information about currently running processes, provides a snapshot of processes at the time the command is executed
+
+**daemon** - processes that run in the background and perform services like networking, printing, and SSH, daemon processes end with the letter "d", (eg SSHd) 
+
+-----
+
+"ps -aux"
+
+a - Show processes for all users, not just your own.
+u - Show the processes in user-oriented format, which includes the username, CPU/memory usage, and start time.
+x - Include processes without a controlling terminal, such as background daemons.
+
+Output: 
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1 169084  5460 ?        Ss   10:00   0:01 /sbin/init
+
+Column meanings:
+**USER**
+The username of the process owner.
+Shows who started the process (root, your username, etc.).
+**PID**
+Process ID, a unique number identifying this process.
+Used for killing, inspecting, or controlling processes.
+**%CPU**
+Percentage of CPU being used by the process right now.
+On multicore systems, >100% is possible if a process uses multiple cores.
+**%MEM**
+Percentage of physical RAM used by the process.
+**VSZ** (Virtual Memory Size)
+The total virtual memory the process can access (in kilobytes).
+Includes code, data, and memory mapped files.
+**RSS** (Resident Set Size)
+The portion of memory actually in RAM (not swapped out), in kilobytes.
+**TTY**
+Terminal associated with the process.
+? means no terminal, common for daemons or background processes.
+**STAT**
+Process state. Common codes:
+R = Running
+S = Sleeping (idle)
+D = Uninterruptible sleep (usually I/O wait)
+Z = Zombie (finished but parent hasn't collected it)
+Additional letters: s (session leader), + (foreground process group), etc.
+**START**
+Time or date the process started.
+**TIME**
+Total CPU time the process has used since it started.
+**COMMAND**
+The command or program that started the process, often including arguments.
+
+-----
+
+**systemd** - master daemon, service manager, initialization system, system boots, kernel boots, systemd boots and performs services like mounting file systems, starting all services and forking other daemons, systemd refers to daemons as "units"
+
+**systemctl** - controls daemons
+
+"sudo systemctl stop sshd" - stops the ssh service 
+"sudo systemctl status ssh" - displays the status of the ssh service
+"sudo systemctl start sshd" - starts the ssh service
+"sudo systemctl restart sshd" - restarts the ssh service
+"sudo systemctl reload sshd" - reloads/refreshes the ssh service
+"sudo systemctl reload-or-restart sshd" - either reloads or restarts the ssh service
+
+"sudo systemctl disable ntp" - ntp or network time protol service does not start when the system is booted again
+"sudo systemctl enable ntp" - ntp service starts when the system is booted again
+
+"sudo systemctl is-active ntp" 
+"sudo systemctl is-enabled ntp"
+
+**sudo systemctl list-units** - lists all the active units/daemons 
+
+"sudo systemctl list-units -t service" - lists all the daemons/units that are services, meaning they end with .service. "-t" means type
+"sudo systemctl list-units | grep "servicename" - finds a service from the list of daemons
+
+**sudo systemctl list-unit-files --all** - finds all services that are not parsed (a document that a computer program has analyzed, broken down into its component parts, and converted from raw, unformatted text into a structured, machine-readable format), or saved into memory
+
+**journalctl** - logs for systemd stuff
+
+"sudo journalctl -xe"
+-x (--catalog): Adds explanatory help text to the log messages. For known errors, it includes descriptions, possible solutions, and links to documentation in the output to help you understand the root cause of a failure.
+-e (--pager-end): Immediately jumps to the very end of the journal in the pager (usually less). This allows you to see the most recent log entries without having to scroll through thousands of older lines.
