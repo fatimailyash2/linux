@@ -415,3 +415,36 @@ The command or program that started the process, often including arguments.
 "sudo journalctl -xe"
 -x (--catalog): Adds explanatory help text to the log messages. For known errors, it includes descriptions, possible solutions, and links to documentation in the output to help you understand the root cause of a failure.
 -e (--pager-end): Immediately jumps to the very end of the journal in the pager (usually less). This allows you to see the most recent log entries without having to scroll through thousands of older lines.
+
+**wc** - word count - used to count lines, words, characters, and bytes in a file or from provided input
+
+-----
+
+"awk -F: '$3 >= 1000 {print $1}' /etc/passwd | wc -l" --> from all users, keep only real users (UID ≥ 1000), print their usernames, and count them 
+
+Each line looks like this:
+
+username:x:UID:GID:comment:home:shell
+
+**awk** = a tool for processing text (super powerful)
+**-F:** = “use : as the separator”
+
+So now each line is split into fields like:
+
+$1 = username  
+$2 = x  
+$3 = UID  
+$4 = GID  
+
+$3 = UID (user ID)
+>= 1000 = only select users with UID 1000 or higher
+
+Why?
+
+System users → usually UID < 1000
+Real/human users → usually UID ≥ 1000
+
+$1 = username
+So this prints only the usernames that passed the filter
+
+-----
