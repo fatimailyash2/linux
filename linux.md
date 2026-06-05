@@ -429,3 +429,14 @@ Nmap (“Network Mapper”) is an open source tool for network exploration and s
 
 syntax: **nmap [scan type] [options] [target]**
 
+scan types used:
+
+**-sT**: scan TCP, 3 way handshake
+**-sS**: stealth scan, 2 way handshake instead of 3 way
+**-sV**: service version detection
+**-A**: scans OS detection, version detection, script scanning, and traceroute
+**-O**: includes OS detection
+**--script vuln**: runs all scripts in nmap's vulnerability category
+**-Pn**: no ping
+**-p**: port
+**-iL**: provide an input file of ips, hostnames, or networks
