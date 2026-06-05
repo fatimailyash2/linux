@@ -31,32 +31,6 @@
 **ssh** - secure shell - protocol that allows clients to access and execute commands or actions on remote computers
 
 **uname** - prints system information, 
-        -a, --all
-              print all information, in the following order, except omit -p and -i if unknown:
-
-       -s, --kernel-name
-              print the kernel name
-
-       -n, --nodename
-              print the network node hostname
-
-       -r, --kernel-release
-              print the kernel release
-
-       -v, --kernel-version
-              print the kernel version
-
-       -m, --machine
-              print the machine hardware name
-
-       -p, --processor
-              print the processor type (non-portable)
-
-       -i, --hardware-platform
-              print the hardware platform (non-portable)
-
-       -o, --operating-system
-
 
 **echo** - displays/prints lines of text, create new text (.txt) files 
     - echo "text" > ex.txt (redirect the output of the first command. This will create the file (or overwrite it if it already exists))
@@ -448,3 +422,10 @@ $1 = username
 So this prints only the usernames that passed the filter
 
 -----
+
+**LEARNING NMAP**
+
+Nmap (“Network Mapper”) is an open source tool for network exploration and security auditing. It was designed to rapidly scan large networks, although it works fine against single hosts.
+
+syntax: **nmap [scan type] [options] [target]**
+
