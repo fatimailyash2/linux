@@ -8,7 +8,7 @@
 
 **--help** - describes a tool (eg ls --help)
 
-**apropos** - searches the descriptions for instances of a given keyword (eg apropos ls)
+**apropos** - searches the descriptions for instances of a given keyword (eg apropos ls), apropos command helps the user when they don't remember the exact command but knows a few keywords related to the command that define its uses or functionality
 
 **whoami** - displays current user
 
@@ -310,7 +310,7 @@ You can use a wildcard (*) to select multiple files that match a pattern. For ex
 
 **ps** - process status - used to display information about currently running processes, provides a snapshot of processes at the time the command is executed
 
-**daemon** - processes that run in the background and perform services like networking, printing, and SSH, daemon processes end with the letter "d", (eg SSHd) 
+**nmap** - processes that run in the background and perform services like networking, printing, and SSH, daemon processes end with the letter "d", (eg SSHd) 
 
 -----
 
@@ -440,3 +440,12 @@ scan types used:
 **-Pn**: no ping
 **-p**: port
 **-iL**: provide an input file of ips, hostnames, or networks
+
+-----
+
+to create a home directory, along with adding a new user, and add that user to the new directory,:
+
+**sudo useradd -m -d [directory path] [username]** 
+
+-m, adds a new user to the default directory,
+-d, creates a directory at a path other than the default
