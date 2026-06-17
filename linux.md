@@ -449,3 +449,9 @@ to create a home directory, along with adding a new user, and add that user to t
 
 -m, adds a new user to the default directory,
 -d, creates a directory at a path other than the default
+
+to lock a user account,:
+
+**sudo usermod -L [username]** or **sudo passwd -l [username]**
+
+-L and -l are both lock flags
